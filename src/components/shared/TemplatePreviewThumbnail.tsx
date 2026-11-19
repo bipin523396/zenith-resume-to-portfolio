@@ -368,3 +368,4 @@ export const TemplatePreviewThumbnail: React.FC<TemplatePreviewThumbnailProps> =
       );
   }
 };
+

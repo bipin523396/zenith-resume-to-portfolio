@@ -57,23 +57,43 @@ export function cleanResumeText(rawText: string): CleanedTextResult {
   // 4. Repair broken lines (e.g. "Engi-\nneer" -> "Engineer", "Rohit \n Yadav" with split names)
   text = text.replace(/(\w+)-\n\s*(\w+)/g, '$1$2');
 
-  // 5. Detect and standardize common resume section headings
+  // 5. Detect and standardize common resume section headings (ordered longest first to avoid partial matches)
   const standardHeadings = [
-    'EDUCATION',
-    'EXPERIENCE',
+    'PROFESSIONAL SUMMARY',
+    'CAREER SUMMARY',
+    'CAREER OBJECTIVE',
+    'PROFESSIONAL EXPERIENCE',
     'WORK EXPERIENCE',
-    'PROJECTS',
+    'EXPERIENCE & HACKATHON PARTICIPATION',
+    'EXPERIENCE',
+    'KEY PROJECTS',
     'PERSONAL PROJECTS',
+    'ACADEMIC PROJECTS',
+    'NOTABLE PROJECTS',
+    'PROJECTS',
     'TECHNICAL SKILLS',
+    'CORE SKILLS',
+    'SKILLS & COMPETENCIES',
     'SKILLS',
+    'EDUCATION & QUALIFICATIONS',
+    'EDUCATION',
+    'CERTIFICATIONS & RECOGNITIONS',
+    'CERTIFICATIONS & COURSES',
+    'CERTIFICATIONS',
+    'CERTIFICATES',
+    'HONORS & AWARDS',
     'ACHIEVEMENTS',
     'AWARDS',
-    'CERTIFICATIONS',
     'HACKATHONS',
     'PUBLICATIONS',
+    'EXTRACURRICULAR ACTIVITIES & AUTOMATION',
+    'EXTRACURRICULAR ACTIVITIES',
+    'EXTRACURRICULAR',
     'LEADERSHIP',
     'SUMMARY',
     'ABOUT ME',
+    'ABOUT',
+    'CONTACT INFORMATION',
     'CONTACT'
   ];
 
