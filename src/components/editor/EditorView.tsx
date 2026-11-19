@@ -251,28 +251,28 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
   });
 
   return (
-    <div className="h-screen bg-[#090A0F] text-[#F8FAFC] flex flex-col overflow-hidden font-sans selection:bg-blue-600 selection:text-white">
+    <div className="h-screen bg-[#0d0f14] text-[#ddd8cc] flex flex-col overflow-hidden font-sans selection:bg-[#c9a84c] selection:text-[#0d0f14]">
       
       {/* 1. TOP NAVIGATION BAR */}
-      <header className="h-14 border-b border-[#1E2330] bg-[#0D0F17] px-4 sm:px-6 flex items-center justify-between z-20 flex-shrink-0 shadow-md">
+      <header className="h-14 border-b border-[rgba(200,180,120,0.12)] bg-[#0d0f14] px-4 sm:px-6 flex items-center justify-between z-20 flex-shrink-0 shadow-md">
         
         {/* Left: Brand, Back, and Project Identity */}
         <div className="flex items-center gap-3">
           <button 
             onClick={onBackToVerification}
-            className="flex items-center gap-1.5 text-xs font-semibold text-[#94A3B8] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[#8a8478] hover:text-[#f5f0e8] transition-colors"
             title="Return to fact verification"
           >
             <ArrowLeft size={14} />
             <span className="hidden sm:inline">Verify</span>
           </button>
 
-          <div className="h-4 w-px bg-[#1E2330]" />
+          <div className="h-4 w-px bg-[rgba(200,180,120,0.15)]" />
 
           <div className="flex items-center gap-2">
-            <span className="font-bold text-xs sm:text-sm text-white">{profile.personal.name}</span>
-            <span className="text-xs text-slate-500 hidden md:inline">/</span>
-            <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 hidden md:inline">
+            <span className="font-bold text-xs sm:text-sm text-[#f5f0e8]">{profile.personal.name}</span>
+            <span className="text-xs text-[#8a8478] hidden md:inline">/</span>
+            <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-[#181c25] text-[#c9a84c] border border-[rgba(200,180,120,0.2)] hidden md:inline">
               {TEMPLATE_REGISTRY.find(t => t.id === theme.templateId)?.title || theme.templateId}
             </span>
           </div>
@@ -287,13 +287,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
         <div className="flex items-center gap-2">
           
           {/* Responsive Viewport Controls */}
-          <div className="flex items-center p-0.5 rounded-lg bg-[#11141E] border border-[#1E2330]">
+          <div className="flex items-center p-0.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.14)]">
             <button
               onClick={() => setViewport('desktop')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'desktop' 
-                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
-                  : 'text-[#94A3B8] hover:text-white'
+                  ? 'bg-[#181c25] text-[#e8d5a3] shadow-xs font-bold border border-[#c9a84c]/40' 
+                  : 'text-[#8a8478] hover:text-[#f5f0e8]'
               }`}
               title="Desktop (1200px+)"
             >
@@ -304,8 +304,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               onClick={() => setViewport('tablet')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'tablet' 
-                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
-                  : 'text-[#94A3B8] hover:text-white'
+                  ? 'bg-[#181c25] text-[#e8d5a3] shadow-xs font-bold border border-[#c9a84c]/40' 
+                  : 'text-[#8a8478] hover:text-[#f5f0e8]'
               }`}
               title="Tablet (768px)"
             >
@@ -316,8 +316,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               onClick={() => setViewport('mobile')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'mobile' 
-                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
-                  : 'text-[#94A3B8] hover:text-white'
+                  ? 'bg-[#181c25] text-[#e8d5a3] shadow-xs font-bold border border-[#c9a84c]/40' 
+                  : 'text-[#8a8478] hover:text-[#f5f0e8]'
               }`}
               title="Mobile (375px)"
             >
@@ -327,11 +327,11 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           </div>
 
           {/* Undo / Redo */}
-          <div className="hidden sm:flex items-center p-0.5 rounded-lg bg-[#11141E] border border-[#1E2330]">
+          <div className="hidden sm:flex items-center p-0.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.14)]">
             <button
               onClick={handleUndo}
               disabled={historyIndex === 0}
-              className={`p-1 rounded ${historyIndex === 0 ? 'opacity-30 cursor-not-allowed text-slate-600' : 'text-[#94A3B8] hover:text-white hover:bg-[#1E2435]'}`}
+              className={`p-1 rounded ${historyIndex === 0 ? 'opacity-30 cursor-not-allowed text-[#8a8478]/40' : 'text-[#8a8478] hover:text-[#f5f0e8] hover:bg-[#181c25]'}`}
               title="Undo change (Cmd+Z)"
             >
               <Undo2 size={13} />
@@ -339,7 +339,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
             <button
               onClick={handleRedo}
               disabled={historyIndex === history.length - 1}
-              className={`p-1 rounded ${historyIndex === history.length - 1 ? 'opacity-30 cursor-not-allowed text-slate-600' : 'text-[#94A3B8] hover:text-white hover:bg-[#1E2435]'}`}
+              className={`p-1 rounded ${historyIndex === history.length - 1 ? 'opacity-30 cursor-not-allowed text-[#8a8478]/40' : 'text-[#8a8478] hover:text-[#f5f0e8] hover:bg-[#181c25]'}`}
               title="Redo change"
             >
               <Redo2 size={13} />
@@ -355,18 +355,18 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
             onClick={() => setIsCopilotOpen(prev => !prev)}
             className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
               isCopilotOpen 
-                ? 'bg-blue-500/10 text-blue-400 border border-blue-500/30' 
-                : 'text-[#94A3B8] hover:text-white hover:bg-[#151926] border border-transparent'
+                ? 'bg-[#c9a84c]/10 text-[#c9a84c] border border-[#c9a84c]/30' 
+                : 'text-[#8a8478] hover:text-[#f5f0e8] hover:bg-[#12151c] border border-transparent'
             }`}
             title="Toggle AI Copilot"
           >
-            <Bot size={14} className="text-[#3B82F6]" />
+            <Bot size={14} className="text-[#c9a84c]" />
             <span className="hidden sm:inline">AI Copilot</span>
           </button>
 
           <button
             onClick={handleDownloadResume}
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1E2330] text-xs font-medium text-slate-200 hover:bg-[#151926] hover:text-white transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(200,180,120,0.15)] text-xs font-medium text-[#ddd8cc] hover:bg-[#12151c] hover:text-[#f5f0e8] transition-colors"
             title="Download formatted resume markdown"
           >
             <FileDown size={13} />
@@ -375,7 +375,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
           <button
             onClick={() => onDownloadZip(profile, theme)}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1E2330] text-xs font-medium text-slate-200 hover:bg-[#151926] hover:text-white transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[rgba(200,180,120,0.15)] text-xs font-medium text-[#ddd8cc] hover:bg-[#12151c] hover:text-[#f5f0e8] transition-colors"
             title="Export clean HTML/React/Tailwind ZIP"
           >
             <Download size={13} />
@@ -384,7 +384,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
           <button
             onClick={() => onPublish(profile, theme)}
-            className="px-3.5 py-1.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-xs shadow-md shadow-blue-500/25 flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] hover:brightness-110 text-[#0d0f14] font-bold text-xs shadow-md shadow-[#c9a84c]/20 flex items-center gap-1.5 transition-all"
           >
             <Globe size={13} />
             <span>Publish Live</span>
@@ -398,10 +398,10 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
       <div className="flex-1 flex overflow-hidden relative">
         
         {/* LEFT PANEL: Builder Tools (Width 340px) */}
-        <div className="w-80 lg:w-88 border-r border-[#1E2330] bg-[#0D0F17] flex flex-col z-10 flex-shrink-0 shadow-xl">
+        <div className="w-80 lg:w-88 border-r border-[rgba(200,180,120,0.12)] bg-[#0d0f14] flex flex-col z-10 flex-shrink-0 shadow-xl">
           
           {/* Navigation Tabs Header */}
-          <div className="grid grid-cols-4 border-b border-[#1E2330] p-1 gap-1 text-[11px] font-semibold bg-[#11141E]/80">
+          <div className="grid grid-cols-4 border-b border-[rgba(200,180,120,0.12)] p-1 gap-1 text-[11px] font-semibold bg-[#12151c]">
             {[
               { id: 'templates', label: 'Templates', icon: <Layers size={13} /> },
               { id: 'theme', label: 'Theme', icon: <Palette size={13} /> },
@@ -413,8 +413,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 onClick={() => setActiveLeftTab(tab.id as any)}
                 className={`py-2 px-1 rounded-md flex flex-col items-center justify-center gap-1 transition-all ${
                   activeLeftTab === tab.id 
-                    ? 'bg-[#1E2435] text-blue-400 shadow-xs font-bold border border-slate-700/60' 
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-[#181c25] text-[#e8d5a3] shadow-xs font-bold border border-[#c9a84c]/40' 
+                    : 'text-[#8a8478] hover:text-[#f5f0e8]'
                 }`}
               >
                 {tab.icon}
@@ -429,13 +429,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               
               {/* Search Bar */}
               <div className="relative">
-                <Search size={14} className="absolute left-3 top-2.5 text-slate-500" />
+                <Search size={14} className="absolute left-3 top-2.5 text-[#8a8478]" />
                 <input
                   type="text"
                   placeholder="Search 24+ templates..."
                   value={templateSearchQuery}
                   onChange={e => setTemplateSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-[#3B82F6]"
+                  className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.16)] text-[#f5f0e8] text-xs placeholder:text-[#8a8478] focus:outline-none focus:border-[#c9a84c]"
                 />
               </div>
 
@@ -447,8 +447,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                     onClick={() => setSelectedCategoryFilter(cat.id)}
                     className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-all ${
                       selectedCategoryFilter === cat.id
-                        ? 'bg-[#1E2435] text-white font-semibold border border-slate-700/60'
-                        : 'bg-[#11141E] text-slate-400 hover:text-white border border-[#1E2330]'
+                        ? 'bg-[#181c25] text-[#e8d5a3] font-semibold border border-[#c9a84c]/40'
+                        : 'bg-[#12151c] text-[#8a8478] hover:text-[#f5f0e8] border border-[rgba(200,180,120,0.12)]'
                     }`}
                   >
                     {cat.label.replace(' Templates', '')}
@@ -466,8 +466,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                       onClick={() => handleThemeChange(prev => ({ ...prev, templateId: t.id }))}
                       className={`cursor-pointer p-3 rounded-xl border transition-all text-left flex flex-col justify-between space-y-2.5 ${
                         isSelected 
-                          ? 'border-[#3B82F6] bg-[#141C2E] shadow-lg ring-1 ring-[#3B82F6]' 
-                          : 'border-[#1E2330] bg-[#11141E] hover:border-[#2F374C] hover:bg-[#151926]'
+                          ? 'border-[#c9a84c] bg-[#181c25] shadow-lg ring-1 ring-[#c9a84c]' 
+                          : 'border-[rgba(200,180,120,0.12)] bg-[#12151c] hover:border-[rgba(200,180,120,0.25)] hover:bg-[#181c25]'
                       }`}
                     >
                       {/* Visual Mockup Thumbnail */}
@@ -480,29 +480,29 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-xs text-white">{t.title}</span>
+                          <span className="font-bold text-xs text-[#f5f0e8]">{t.title}</span>
                           {t.badge && (
-                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-[#181C28] text-blue-400 border border-[#252B3B]">
+                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-[#0d0f14] text-[#c9a84c] border border-[rgba(200,180,120,0.2)]">
                               {t.badge}
                             </span>
                           )}
                         </div>
                         {isSelected ? (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#3B82F6] text-white">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-gradient-to-r from-[#8b6914] to-[#c9a84c] text-[#0d0f14]">
                             Active
                           </span>
                         ) : (
-                          <span className="text-[10px] font-medium text-blue-400 hover:underline">
+                          <span className="text-[10px] font-medium text-[#c9a84c] hover:underline">
                             Select
                           </span>
                         )}
                       </div>
 
-                      <div className="text-[11px] font-medium text-blue-400">
+                      <div className="text-[11px] font-medium text-[#c9a84c]">
                         {t.layoutStyle}
                       </div>
 
-                      <p className="text-[11px] text-[#94A3B8] leading-relaxed line-clamp-2">
+                      <p className="text-[11px] text-[#8a8478] leading-relaxed line-clamp-2">
                         {t.desc}
                       </p>
                     </div>
@@ -520,8 +520,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               {/* Color Palettes */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <label className="font-bold text-[#14213D] text-xs">Curated Color Palettes</label>
-                  <div className="flex rounded-md p-0.5 bg-slate-100 border border-slate-200 text-[10px]">
+                  <label className="font-bold text-[#f5f0e8] text-xs">Curated Color Palettes</label>
+                  <div className="flex rounded-md p-0.5 bg-[#0d0f14] border border-[rgba(200,180,120,0.15)] text-[10px]">
                     {(['all', 'dark', 'light'] as const).map(mode => (
                       <button
                         key={mode}
@@ -529,8 +529,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                         onClick={() => setPaletteModeFilter(mode)}
                         className={`px-2 py-0.5 rounded capitalize font-medium transition-colors ${
                           paletteModeFilter === mode 
-                            ? 'bg-white text-[#2563EB] shadow-xs font-bold' 
-                            : 'text-slate-500 hover:text-slate-900'
+                            ? 'bg-[#181c25] text-[#e8d5a3] shadow-xs font-bold' 
+                            : 'text-[#8a8478] hover:text-[#f5f0e8]'
                         }`}
                       >
                         {mode}
@@ -561,28 +561,28 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                           }))}
                           className={`p-2 rounded-xl border text-left flex items-center justify-between gap-3 transition-all ${
                             isSelected 
-                              ? 'border-[#2563EB] bg-blue-50/70 shadow-xs ring-1 ring-[#2563EB]' 
-                              : 'border-[#E2E8F0] bg-white hover:bg-slate-50'
+                              ? 'border-[#c9a84c] bg-[#181c25] shadow-xs ring-1 ring-[#c9a84c]' 
+                              : 'border-[rgba(200,180,120,0.12)] bg-[#12151c] hover:bg-[#181c25]'
                           }`}
                         >
                           <div className="flex items-center gap-2.5 min-w-0">
                             {/* Visual 3-color swatch */}
                             <div className="flex items-center -space-x-1 shrink-0">
-                              <span className="w-4 h-4 rounded-full border border-black/10 shadow-xs" style={{ backgroundColor: pal.bg }} title="Background" />
-                              <span className="w-4 h-4 rounded-full border border-black/10 shadow-xs" style={{ backgroundColor: pal.surface }} title="Card Surface" />
-                              <span className="w-4 h-4 rounded-full border border-black/10 shadow-xs ring-1 ring-white" style={{ backgroundColor: pal.accent }} title="Accent Color" />
+                              <span className="w-4 h-4 rounded-full border border-black/20 shadow-xs" style={{ backgroundColor: pal.bg }} title="Background" />
+                              <span className="w-4 h-4 rounded-full border border-black/20 shadow-xs" style={{ backgroundColor: pal.surface }} title="Card Surface" />
+                              <span className="w-4 h-4 rounded-full border border-black/20 shadow-xs ring-1 ring-[#c9a84c]" style={{ backgroundColor: pal.accent }} title="Accent Color" />
                             </div>
 
                             <div className="truncate">
-                              <div className="text-[11px] font-bold text-[#172033] truncate leading-tight">{pal.name}</div>
-                              <div className="text-[10px] text-[#64748B]">
+                              <div className="text-[11px] font-bold text-[#f5f0e8] truncate leading-tight">{pal.name}</div>
+                              <div className="text-[10px] text-[#8a8478]">
                                 {pal.isLight ? '☀️ Clean Light' : '🌙 Rich Dark'}
                               </div>
                             </div>
                           </div>
 
                           {isSelected && (
-                            <span className="w-2 h-2 rounded-full bg-[#2563EB] shrink-0" />
+                            <span className="w-2 h-2 rounded-full bg-[#c9a84c] shrink-0" />
                           )}
                         </button>
                       );
@@ -591,10 +591,10 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               </div>
 
               {/* Custom Accent Color Picker */}
-              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div className="p-3 rounded-xl bg-[#12151c] border border-[rgba(200,180,120,0.14)] space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-[11px] font-bold text-[#14213D]">Custom Accent Color</label>
-                  <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-white border border-slate-200 text-slate-700">
+                  <label className="text-[11px] font-bold text-[#f5f0e8]">Custom Accent Color</label>
+                  <span className="font-mono text-[10px] px-1.5 py-0.5 rounded bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] text-[#e8d5a3]">
                     {theme.accentColor}
                   </span>
                 </div>
@@ -603,16 +603,16 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                     type="color"
                     value={theme.accentColor || '#c9a84c'}
                     onChange={e => handleThemeChange(prev => ({ ...prev, accentColor: e.target.value }))}
-                    className="w-8 h-8 rounded-lg border border-slate-300 cursor-pointer p-0.5 bg-white shrink-0"
+                    className="w-8 h-8 rounded-lg border border-[rgba(200,180,120,0.2)] cursor-pointer p-0.5 bg-[#0d0f14] shrink-0"
                   />
                   <div className="flex items-center gap-1.5 flex-1 flex-wrap">
-                    {['#c9a84c', '#2563EB', '#10B981', '#8B5CF6', '#EC4899', '#06B6D4', '#F59E0B', '#E11D48'].map(hex => (
+                    {['#c9a84c', '#e8d5a3', '#8b6914', '#2563EB', '#10B981', '#8B5CF6', '#EC4899', '#06B6D4'].map(hex => (
                       <button
                         key={hex}
                         type="button"
                         onClick={() => handleThemeChange(prev => ({ ...prev, accentColor: hex }))}
                         className={`w-5 h-5 rounded-full border transition-transform hover:scale-125 ${
-                          theme.accentColor === hex ? 'scale-125 ring-2 ring-blue-600' : 'border-black/10'
+                          theme.accentColor === hex ? 'scale-125 ring-2 ring-[#c9a84c]' : 'border-white/10'
                         }`}
                         style={{ backgroundColor: hex }}
                       />
@@ -623,23 +623,23 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
               {/* Typography Preset */}
               <div className="space-y-2">
-                <label className="font-bold text-[#14213D] text-xs">Typography</label>
+                <label className="font-bold text-[#f5f0e8] text-xs">Typography</label>
                 <div className="grid grid-cols-2 gap-2">
                   {[
+                    { id: 'space', label: 'Space Grotesk (Tech)' },
                     { id: 'inter', label: 'Inter (Clean Sans)' },
                     { id: 'outfit', label: 'Outfit (Modern Display)' },
                     { id: 'editorial', label: 'Playfair (Editorial Serif)' },
-                    { id: 'space', label: 'Space Grotesk (Tech)' },
                     { id: 'syne', label: 'Syne (Avant-Garde)' },
-                    { id: 'mono', label: 'JetBrains Mono' }
+                    { id: 'mono', label: 'Space Mono' }
                   ].map(font => (
                     <button
                       key={font.id}
                       onClick={() => handleThemeChange(prev => ({ ...prev, fontFamily: font.id as FontFamilyType }))}
                       className={`p-2 rounded-lg border text-[11px] text-left transition-all ${
                         theme.fontFamily === font.id 
-                          ? 'border-[#2563EB] bg-blue-50 text-[#2563EB] font-bold' 
-                          : 'border-[#E2E8F0] bg-white text-[#172033] hover:bg-slate-50'
+                          ? 'border-[#c9a84c] bg-[#181c25] text-[#e8d5a3] font-bold' 
+                          : 'border-[rgba(200,180,120,0.12)] bg-[#12151c] text-[#ddd8cc] hover:bg-[#181c25]'
                       }`}
                     >
                       {font.label}
@@ -649,13 +649,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               </div>
 
               {/* Spacing & Border Radius */}
-              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[#E2E8F0]">
+              <div className="grid grid-cols-2 gap-3 pt-2 border-t border-[rgba(200,180,120,0.12)]">
                 <div className="space-y-1.5">
-                  <label className="font-bold text-[#14213D] text-[11px]">Rhythm Spacing</label>
+                  <label className="font-bold text-[#f5f0e8] text-[11px]">Rhythm Spacing</label>
                   <select
                     value={theme.spacing}
                     onChange={e => handleThemeChange(prev => ({ ...prev, spacing: e.target.value as any }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                   >
                     <option value="compact">Compact</option>
                     <option value="normal">Standard</option>
@@ -664,11 +664,11 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="font-bold text-[#14213D] text-[11px]">Corner Radius</label>
+                  <label className="font-bold text-[#f5f0e8] text-[11px]">Corner Radius</label>
                   <select
                     value={theme.borderRadius}
                     onChange={e => handleThemeChange(prev => ({ ...prev, borderRadius: e.target.value as any }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                   >
                     <option value="none">Sharp (0px)</option>
                     <option value="sm">Subtle (4px)</option>
@@ -685,89 +685,89 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           {/* TAB 3: CONTENT QUICK EDIT */}
           {activeLeftTab === 'content' && (
             <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
-              <div className="border-b border-[#E2E8F0] pb-2">
-                <span className="font-bold text-[#14213D]">Edit Profile Content</span>
-                <p className="text-[11px] text-[#64748B]">Edits update your live website instantly.</p>
+              <div className="border-b border-[rgba(200,180,120,0.12)] pb-2">
+                <span className="font-bold text-[#f5f0e8]">Edit Profile Content</span>
+                <p className="text-[11px] text-[#8a8478]">Edits update your live website instantly.</p>
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">Candidate Name</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">Candidate Name</label>
                 <input 
                   type="text" 
                   value={profile.personal.name}
                   onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, name: e.target.value } }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">Professional Title</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">Professional Title</label>
                 <input 
                   type="text" 
                   value={profile.personal.professionalTitle || ''}
                   onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, professionalTitle: e.target.value } }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">Headline</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">Headline</label>
                 <textarea 
                   rows={2}
                   value={profile.personal.headline}
                   onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, headline: e.target.value } }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033] leading-relaxed"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none leading-relaxed"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">Bio & Career Story</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">Bio & Career Story</label>
                 <textarea 
                   rows={4}
                   value={profile.personal.bio}
                   onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, bio: e.target.value } }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033] leading-relaxed"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none leading-relaxed"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-2">
                 <div className="space-y-1">
-                  <label className="font-semibold text-[#14213D] text-[11px]">Email</label>
+                  <label className="font-semibold text-[#ddd8cc] text-[11px]">Email</label>
                   <input 
                     type="email" 
                     value={profile.personal.email || ''}
                     onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, email: e.target.value } }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="font-semibold text-[#14213D] text-[11px]">Location</label>
+                  <label className="font-semibold text-[#ddd8cc] text-[11px]">Location</label>
                   <input 
                     type="text" 
                     value={profile.personal.location || ''}
                     onChange={e => handleProfileChange(p => ({ ...p, personal: { ...p.personal, location: e.target.value } }))}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033]"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">GitHub URL</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">GitHub URL</label>
                 <input 
                   type="text" 
                   value={profile.socialLinks.github || ''}
                   onChange={e => handleProfileChange(p => ({ ...p, socialLinks: { ...p.socialLinks, github: e.target.value } }))}
-                  className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033] font-mono"
+                  className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none font-mono"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="font-semibold text-[#14213D] text-[11px]">LinkedIn URL</label>
+                <label className="font-semibold text-[#ddd8cc] text-[11px]">LinkedIn URL</label>
                 <input 
                   type="text" 
                   value={profile.socialLinks.linkedin || ''}
                   onChange={e => handleProfileChange(p => ({ ...p, socialLinks: { ...p.socialLinks, linkedin: e.target.value } }))}
-                  className="w-full px-2.5 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs text-[#172033] font-mono"
+                  className="w-full px-2.5 py-1.5 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.18)] text-xs text-[#f5f0e8] focus:border-[#c9a84c] focus:outline-none font-mono"
                 />
               </div>
             </div>
@@ -776,28 +776,30 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           {/* TAB 4: SECTIONS & REORDERING */}
           {activeLeftTab === 'sections' && (
             <div className="flex-1 overflow-y-auto p-4 space-y-3 text-xs">
-              <div className="border-b border-[#E2E8F0] pb-2">
-                <span className="font-bold text-[#14213D]">Section Visibility & Order</span>
-                <p className="text-[11px] text-[#64748B]">Toggle or reorder sections on your website.</p>
+              <div className="border-b border-[rgba(200,180,120,0.12)] pb-2">
+                <span className="font-bold text-[#f5f0e8]">Section Visibility & Order</span>
+                <p className="text-[11px] text-[#8a8478]">Toggle or reorder sections on your website.</p>
               </div>
 
               <div className="space-y-1.5">
                 {theme.sections.map((sec, idx) => (
                   <div 
                     key={sec.id}
-                    className="flex items-center justify-between p-2 rounded-lg bg-slate-50 border border-[#E2E8F0] text-xs font-medium text-[#172033]"
+                    className="flex items-center justify-between p-2 rounded-lg bg-[#12151c] border border-[rgba(200,180,120,0.14)] text-xs font-medium text-[#f5f0e8]"
                   >
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => handleToggleSection(sec.id)}
                         className={`w-4 h-4 rounded flex items-center justify-center transition-colors ${
-                          sec.visible ? 'bg-[#2563EB] text-white' : 'border border-slate-300 bg-white'
+                          sec.visible 
+                            ? 'bg-gradient-to-r from-[#8b6914] to-[#c9a84c] text-[#0d0f14]' 
+                            : 'border border-[rgba(200,180,120,0.2)] bg-[#0d0f14]'
                         }`}
                         title={sec.visible ? 'Hide section' : 'Show section'}
                       >
                         {sec.visible && <Check size={11} />}
                       </button>
-                      <span className={sec.visible ? '' : 'line-through text-slate-400'}>
+                      <span className={sec.visible ? '' : 'line-through text-[#8a8478]'}>
                         {sec.name}
                       </span>
                     </div>
@@ -806,14 +808,14 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                       <button
                         onClick={() => handleMoveSection(idx, 'up')}
                         disabled={idx === 0}
-                        className={`p-1 rounded text-slate-400 hover:text-[#172033] ${idx === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-slate-200'}`}
+                        className={`p-1 rounded text-[#8a8478] hover:text-[#f5f0e8] ${idx === 0 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-[#181c25]'}`}
                       >
                         <MoveUp size={12} />
                       </button>
                       <button
                         onClick={() => handleMoveSection(idx, 'down')}
                         disabled={idx === theme.sections.length - 1}
-                        className={`p-1 rounded text-slate-400 hover:text-[#172033] ${idx === theme.sections.length - 1 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-slate-200'}`}
+                        className={`p-1 rounded text-[#8a8478] hover:text-[#f5f0e8] ${idx === theme.sections.length - 1 ? 'opacity-20 cursor-not-allowed' : 'hover:bg-[#181c25]'}`}
                       >
                         <MoveDown size={12} />
                       </button>
@@ -827,7 +829,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
         </div>
 
         {/* CENTER PANEL: LIVE RESPONSIVE WEBSITE CANVAS */}
-        <div className="flex-1 bg-[#050608] overflow-y-auto flex items-start justify-center p-4 sm:p-6 transition-all">
+        <div className="flex-1 bg-[#090b0e] overflow-y-auto flex items-start justify-center p-4 sm:p-6 transition-all">
           <div 
             className={`transition-all duration-300 rounded-xl shadow-2xl border border-[#1E2330] overflow-hidden bg-black min-h-[90vh] ${
               viewport === 'desktop' 
@@ -839,14 +841,14 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           >
             {/* Viewport Frame Chrome Bar (for mobile & tablet) */}
             {viewport !== 'desktop' && (
-              <div className="bg-[#0D0F17] border-b border-[#1E2330] px-4 py-2 flex items-center justify-between text-[11px] text-[#94A3B8]">
+              <div className="bg-[#12151c] border-b border-[rgba(200,180,120,0.12)] px-4 py-2 flex items-center justify-between text-[11px] text-[#8a8478]">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
                 <span className="font-mono">{viewport === 'tablet' ? '768 × 1024' : '375 × 812'}</span>
-                <span className="font-medium text-white">{profile.personal.name}</span>
+                <span className="font-medium text-[#f5f0e8]">{profile.personal.name}</span>
               </div>
             )}
 
@@ -861,23 +863,23 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
         {/* RIGHT PANEL: AI COPILOT PRODUCTIVITY ASSISTANT (Width 340px) */}
         {isCopilotOpen && (
-          <div className="w-80 lg:w-88 border-l border-[#1E2330] bg-[#0D0F17] flex flex-col z-10 flex-shrink-0 shadow-xl animate-fadeIn">
+          <div className="w-80 lg:w-88 border-l border-[rgba(200,180,120,0.12)] bg-[#0d0f14] flex flex-col z-10 flex-shrink-0 shadow-xl animate-fadeIn">
             
             {/* Copilot Header */}
-            <div className="p-3.5 border-b border-[#1E2330] flex items-center justify-between bg-[#11141E]/80">
+            <div className="p-3.5 border-b border-[rgba(200,180,120,0.12)] flex items-center justify-between bg-[#12151c]">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
+                <div className="w-6 h-6 rounded bg-[#c9a84c]/10 text-[#c9a84c] flex items-center justify-center border border-[#c9a84c]/20">
                   <Bot size={15} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs text-white">Portfolio Copilot</h3>
-                  <div className="text-[10px] text-[#94A3B8]">Productivity & Writing Assistant</div>
+                  <h3 className="font-bold text-xs text-[#f5f0e8]">Portfolio Copilot</h3>
+                  <div className="text-[10px] text-[#8a8478]">Productivity & Writing Assistant</div>
                 </div>
               </div>
 
               <button 
                 onClick={() => setIsCopilotOpen(false)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-[#8a8478] hover:text-[#f5f0e8] p-1"
                 title="Collapse Copilot"
               >
                 <X size={15} />
@@ -889,32 +891,32 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               
               {/* Status Message */}
               {copilotStatusMsg && (
-                <div className="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] flex items-center gap-2">
-                  <CheckCircle2 size={13} className="text-emerald-600 flex-shrink-0" />
+                <div className="p-2.5 rounded-lg bg-[#181c25] border border-emerald-500/30 text-emerald-300 text-[11px] flex items-center gap-2">
+                  <CheckCircle2 size={13} className="text-emerald-400 flex-shrink-0" />
                   <span>{copilotStatusMsg}</span>
                 </div>
               )}
 
               {/* Tool 1: Headline Polish */}
-              <div className="p-3.5 rounded-xl border border-[#E2E8F0] bg-slate-50/50 space-y-3">
+              <div className="p-3.5 rounded-xl border border-[rgba(200,180,120,0.14)] bg-[#12151c] space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#14213D]">Headline Optimizer</span>
-                  <span className="text-[10px] font-medium text-[#2563EB] bg-blue-50 px-1.5 py-0.5 rounded">Context-Aware</span>
+                  <span className="font-bold text-xs text-[#f5f0e8]">Headline Optimizer</span>
+                  <span className="text-[10px] font-medium text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-1.5 py-0.5 rounded">Context-Aware</span>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-[#64748B]">Target Role</label>
+                  <label className="text-[11px] font-medium text-[#8a8478]">Target Role</label>
                   <input 
                     type="text"
                     value={targetRole}
                     onChange={e => setTargetRole(e.target.value)}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] text-xs font-medium"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] text-[#f5f0e8] text-xs font-medium focus:border-[#c9a84c] focus:outline-none"
                     placeholder="e.g. Senior Software Engineer"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-[#64748B]">Writing Tone</label>
+                  <label className="text-[11px] font-medium text-[#8a8478]">Writing Tone</label>
                   <div className="grid grid-cols-2 gap-1.5">
                     {[
                       { id: 'impactful', label: 'Impactful' },
@@ -927,8 +929,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                         onClick={() => setSelectedTone(tone.id as any)}
                         className={`py-1 px-2 rounded text-[11px] border text-center transition-all ${
                           selectedTone === tone.id
-                            ? 'bg-[#14213D] text-white font-semibold border-[#14213D]'
-                            : 'bg-white text-[#64748B] border-[#CBD5E1] hover:bg-slate-100'
+                            ? 'bg-[#181c25] text-[#e8d5a3] font-semibold border border-[#c9a84c]/40'
+                            : 'bg-[#0d0f14] text-[#8a8478] border border-[rgba(200,180,120,0.14)] hover:bg-[#181c25]'
                         }`}
                       >
                         {tone.label}
@@ -940,7 +942,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 <button
                   onClick={handleAiRewriteHeadline}
                   disabled={copilotLoading}
-                  className="w-full py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                  className="w-full py-2 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] hover:brightness-110 text-[#0d0f14] font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-[#c9a84c]/20 transition-all"
                 >
                   {copilotLoading ? <RefreshCw size={12} className="animate-spin" /> : <Sparkles size={12} />}
                   <span>Generate Headline Options</span>
@@ -948,27 +950,27 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
                 {/* Proposal Comparison Card */}
                 {copilotHeadlineProposal && (
-                  <div className="p-3 rounded-xl bg-white border border-[#CBD5E1] shadow-xs space-y-2 mt-2">
-                    <div className="text-[10px] font-bold text-[#2563EB] uppercase tracking-wider">
+                  <div className="p-3 rounded-xl bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] shadow-xs space-y-2 mt-2">
+                    <div className="text-[10px] font-bold text-[#c9a84c] uppercase tracking-wider">
                       Proposed Headline:
                     </div>
-                    <div className="text-xs text-[#172033] font-medium leading-relaxed bg-blue-50/50 p-2 rounded-lg border border-blue-100">
+                    <div className="text-xs text-[#f5f0e8] font-medium leading-relaxed bg-[#181c25] p-2 rounded-lg border border-[rgba(200,180,120,0.14)]">
                       "{copilotHeadlineProposal.after}"
                     </div>
-                    <div className="text-[11px] text-[#64748B]">
+                    <div className="text-[11px] text-[#8a8478]">
                       {copilotHeadlineProposal.explanation}
                     </div>
 
                     <div className="flex gap-2 pt-1">
                       <button
                         onClick={handleAcceptHeadlineProposal}
-                        className="flex-1 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center justify-center gap-1"
+                        className="flex-1 py-1.5 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] text-[#0d0f14] font-bold text-xs flex items-center justify-center gap-1"
                       >
                         <Check size={12} /> Apply Headline
                       </button>
                       <button
                         onClick={() => setCopilotHeadlineProposal(null)}
-                        className="px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] text-[#64748B] hover:text-[#172033] text-xs font-medium"
+                        className="px-2.5 py-1.5 rounded-lg border border-[rgba(200,180,120,0.18)] text-[#8a8478] hover:text-[#f5f0e8] text-xs font-medium"
                       >
                         Dismiss
                       </button>
@@ -978,18 +980,18 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               </div>
 
               {/* Tool 2: Project Case Study Polish */}
-              <div className="p-3.5 rounded-xl border border-[#E2E8F0] bg-slate-50/50 space-y-3">
+              <div className="p-3.5 rounded-xl border border-[rgba(200,180,120,0.14)] bg-[#12151c] space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-xs text-[#14213D]">Project Case Study Polish</span>
-                  <span className="text-[10px] font-medium text-[#2563EB] bg-blue-50 px-1.5 py-0.5 rounded">Quantified</span>
+                  <span className="font-bold text-xs text-[#f5f0e8]">Project Case Study Polish</span>
+                  <span className="text-[10px] font-medium text-[#c9a84c] bg-[#c9a84c]/10 border border-[#c9a84c]/20 px-1.5 py-0.5 rounded">Quantified</span>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-[11px] font-medium text-[#64748B]">Select Project</label>
+                  <label className="text-[11px] font-medium text-[#8a8478]">Select Project</label>
                   <select
                     value={selectedProjectForAi}
                     onChange={e => setSelectedProjectForAi(e.target.value)}
-                    className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] text-xs"
+                    className="w-full px-2.5 py-1.5 rounded-lg bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] text-[#f5f0e8] text-xs focus:border-[#c9a84c] focus:outline-none"
                   >
                     {profile.projects.map(p => (
                       <option key={p.id} value={p.id}>{p.name}</option>
@@ -1000,7 +1002,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 <button
                   onClick={handleAiRewriteProject}
                   disabled={copilotLoading}
-                  className="w-full py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm transition-all"
+                  className="w-full py-2 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] hover:brightness-110 text-[#0d0f14] font-bold text-xs flex items-center justify-center gap-1.5 shadow-md shadow-[#c9a84c]/20 transition-all"
                 >
                   {copilotLoading ? <RefreshCw size={12} className="animate-spin" /> : <Sparkles size={12} />}
                   <span>Refine Project Narrative</span>
@@ -1008,18 +1010,18 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
                 {/* Project Proposal Diff */}
                 {copilotProjectProposal && (
-                  <div className="p-3 rounded-xl bg-white border border-[#CBD5E1] shadow-xs space-y-2 mt-2">
-                    <div className="text-[10px] font-bold text-[#2563EB] uppercase tracking-wider">
+                  <div className="p-3 rounded-xl bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] shadow-xs space-y-2 mt-2">
+                    <div className="text-[10px] font-bold text-[#c9a84c] uppercase tracking-wider">
                       Enhanced Description:
                     </div>
-                    <div className="text-xs text-[#172033] leading-relaxed bg-blue-50/50 p-2 rounded-lg border border-blue-100">
+                    <div className="text-xs text-[#f5f0e8] leading-relaxed bg-[#181c25] p-2 rounded-lg border border-[rgba(200,180,120,0.14)]">
                       {copilotProjectProposal.after}
                     </div>
 
                     {copilotProjectProposal.bullets.length > 0 && (
                       <div className="space-y-1">
-                        <div className="text-[10px] font-semibold text-[#64748B]">Impact Bullets:</div>
-                        <ul className="list-disc list-inside text-[11px] text-[#172033] space-y-0.5">
+                        <div className="text-[10px] font-semibold text-[#8a8478]">Impact Bullets:</div>
+                        <ul className="list-disc list-inside text-[11px] text-[#f5f0e8] space-y-0.5">
                           {copilotProjectProposal.bullets.map((b, bi) => (
                             <li key={bi}>{b}</li>
                           ))}
@@ -1030,13 +1032,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                     <div className="flex gap-2 pt-1">
                       <button
                         onClick={handleAcceptProjectProposal}
-                        className="flex-1 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs flex items-center justify-center gap-1"
+                        className="flex-1 py-1.5 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] text-[#0d0f14] font-bold text-xs flex items-center justify-center gap-1"
                       >
                         <Check size={12} /> Apply Improvements
                       </button>
                       <button
                         onClick={() => setCopilotProjectProposal(null)}
-                        className="px-2.5 py-1.5 rounded-lg border border-[#CBD5E1] text-[#64748B] hover:text-[#172033] text-xs font-medium"
+                        className="px-2.5 py-1.5 rounded-lg border border-[rgba(200,180,120,0.18)] text-[#8a8478] hover:text-[#f5f0e8] text-xs font-medium"
                       >
                         Dismiss
                       </button>
@@ -1046,9 +1048,9 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               </div>
 
               {/* Fact Preservation Assurance */}
-              <div className="p-3 rounded-xl bg-slate-50 border border-[#E2E8F0] space-y-1 text-[#64748B]">
-                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#14213D]">
-                  <ShieldCheck size={13} className="text-emerald-600" />
+              <div className="p-3 rounded-xl bg-[#12151c] border border-[rgba(200,180,120,0.14)] space-y-1 text-[#8a8478]">
+                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#f5f0e8]">
+                  <ShieldCheck size={13} className="text-[#c9a84c]" />
                   <span>Fact Integrity Protection</span>
                 </div>
                 <p className="text-[10px] leading-relaxed">

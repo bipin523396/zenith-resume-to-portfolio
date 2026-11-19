@@ -173,24 +173,24 @@ export const PublishModal: React.FC<PublishModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn font-sans">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn font-sans selection:bg-[#c9a84c] selection:text-[#0d0f14]">
       <div 
-        className="w-full max-w-lg rounded-2xl border border-[#1E2330] bg-[#11141E] text-[#F8FAFC] shadow-2xl p-6 sm:p-7 space-y-5 relative overflow-hidden"
+        className="w-full max-w-lg rounded-2xl border border-[rgba(200,180,120,0.18)] bg-[#12151c] text-[#ddd8cc] shadow-2xl p-6 sm:p-7 space-y-5 relative overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#1E2330] pb-4">
+        <div className="flex items-center justify-between border-b border-[rgba(200,180,120,0.14)] pb-4">
           <div className="flex items-center gap-3">
             <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-              isUnpublished ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+              isUnpublished ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-[#c9a84c]/10 text-[#c9a84c] border border-[#c9a84c]/20'
             }`}>
               <Globe size={18} />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">
+              <h2 className="text-base font-bold text-[#f5f0e8]">
                 {isUnpublished ? 'Portfolio Unpublished' : 'Portfolio is Live!'}
               </h2>
-              <div className="text-xs text-[#94A3B8]">
+              <div className="text-xs text-[#8a8478]">
                 {isUnpublished ? 'Public access is currently suspended' : 'Accessible worldwide via custom URL'}
               </div>
             </div>
@@ -198,7 +198,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
 
           <button 
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-[#1E2435] transition-colors"
+            className="p-1 rounded-lg text-[#8a8478] hover:text-[#f5f0e8] hover:bg-[#181c25] transition-colors"
           >
             <X size={18} />
           </button>
@@ -208,17 +208,17 @@ export const PublishModal: React.FC<PublishModalProps> = ({
         {!isUnpublished ? (
           <div className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300">Public Live Website URL</label>
+              <label className="text-xs font-semibold text-[#ddd8cc]">Public Live Website URL</label>
               <div className="flex items-center gap-2">
                 <input 
                   type="text" 
                   readOnly 
                   value={publicShareUrl}
-                  className="flex-1 px-3 py-2 rounded-lg bg-[#0D0F17] border border-[#22283A] text-xs font-mono text-white select-all focus:outline-none focus:border-[#3B82F6]"
+                  className="flex-1 px-3 py-2 rounded-lg bg-[#0d0f14] border border-[rgba(200,180,120,0.18)] text-xs font-mono text-[#f5f0e8] select-all focus:outline-none focus:border-[#c9a84c]"
                 />
                 <button
                   onClick={handleCopyLink}
-                  className="px-3.5 py-2 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-2 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] hover:brightness-110 text-[#0d0f14] text-xs font-bold flex items-center gap-1.5 transition-all shadow-md shadow-[#c9a84c]/20"
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
                   <span>{copied ? 'Copied' : 'Copy'}</span>
@@ -232,21 +232,21 @@ export const PublishModal: React.FC<PublishModalProps> = ({
                 ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
                 : cloudStatus.configured 
                   ? 'bg-amber-500/10 border-amber-500/20 text-amber-300'
-                  : 'bg-[#141824] border-[#1E2330] text-slate-300'
+                  : 'bg-[#181c25] border-[rgba(200,180,120,0.14)] text-[#ddd8cc]'
             }`}>
               <div className="flex items-center gap-2">
                 {isSyncing ? (
-                  <RefreshCw size={14} className="text-[#3B82F6] animate-spin" />
+                  <RefreshCw size={14} className="text-[#c9a84c] animate-spin" />
                 ) : cloudStatus.synced ? (
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-500/30" />
                 ) : (
-                  <Database size={14} className="text-slate-400" />
+                  <Database size={14} className="text-[#8a8478]" />
                 )}
                 <div className="flex flex-col">
-                  <span className="font-semibold text-[11px] text-white">
+                  <span className="font-semibold text-[11px] text-[#f5f0e8]">
                     {cloudStatus.synced ? 'Supabase Cloud Database' : 'Storage Mode'}
                   </span>
-                  <span className="text-[11px] opacity-80">
+                  <span className="text-[11px] opacity-80 text-[#8a8478]">
                     {cloudStatus.message}
                   </span>
                 </div>
@@ -254,7 +254,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
 
               <button
                 onClick={onOpenLiveSite}
-                className="text-xs font-semibold text-[#3B82F6] hover:underline flex items-center gap-1 shrink-0 ml-2"
+                className="text-xs font-semibold text-[#c9a84c] hover:underline flex items-center gap-1 shrink-0 ml-2"
               >
                 <span>Open Website</span>
                 <ExternalLink size={12} />
@@ -266,7 +266,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
             <p>Your portfolio has been removed from public access. Only local drafts exist in your browser.</p>
             <button
               onClick={handleRepublish}
-              className="px-3.5 py-1.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-xs transition-colors"
+              className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-[#8b6914] to-[#c9a84c] text-[#0d0f14] font-bold text-xs transition-colors"
             >
               Re-Publish Website
             </button>
@@ -274,10 +274,10 @@ export const PublishModal: React.FC<PublishModalProps> = ({
         )}
 
         {/* Actions Grid */}
-        <div className="pt-2 border-t border-[#1E2330] flex flex-wrap items-center justify-between gap-3">
+        <div className="pt-2 border-t border-[rgba(200,180,120,0.14)] flex flex-wrap items-center justify-between gap-3">
           <button
             onClick={onDownloadZip}
-            className="flex items-center gap-1.5 text-xs font-semibold text-[#94A3B8] hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[#8a8478] hover:text-[#f5f0e8] transition-colors"
           >
             <Download size={13} />
             <span>Download Standalone ZIP</span>
@@ -287,14 +287,14 @@ export const PublishModal: React.FC<PublishModalProps> = ({
             {!isUnpublished && (
               <button
                 onClick={handleUnpublish}
-                className="px-3 py-1.5 rounded-lg border border-red-200 text-red-600 hover:bg-red-50 text-xs font-medium transition-colors"
+                className="px-3 py-1.5 rounded-lg border border-red-500/30 text-red-400 hover:bg-red-500/10 text-xs font-medium transition-colors"
               >
                 Unpublish
               </button>
             )}
             <button
               onClick={onClose}
-              className="px-4 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-[#172033] text-xs font-semibold transition-colors"
+              className="px-4 py-1.5 rounded-lg bg-[#181c25] hover:bg-[#1f2430] border border-[rgba(200,180,120,0.18)] text-[#f5f0e8] text-xs font-semibold transition-colors"
             >
               Done
             </button>

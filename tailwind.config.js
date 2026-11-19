@@ -8,41 +8,53 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        display: ['Outfit', 'sans-serif'],
+        sans: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+        display: ['"Space Grotesk"', 'Outfit', 'sans-serif'],
         editorial: ['"Playfair Display"', 'serif'],
         syne: ['Syne', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        mono: ['"Space Mono"', '"JetBrains Mono"', 'monospace'],
         space: ['"Space Grotesk"', 'sans-serif']
       },
       colors: {
         brand: {
-          navy: '#14213D',
-          blue: '#2563EB',
-          'blue-hover': '#1D4ED8',
-          'blue-light': '#EFF6FF',
-          secondary: '#3B82F6',
-          bg: '#F5F7FA',
-          surface: '#FFFFFF',
-          text: '#172033',
-          muted: '#64748B',
-          border: '#E2E8F0',
-          success: '#16A34A',
-          warning: '#D97706',
-          error: '#DC2626'
+          navy: '#f5f0e8',
+          blue: '#c9a84c',
+          'blue-hover': '#e8d5a3',
+          'blue-light': 'rgba(201, 168, 76, 0.12)',
+          secondary: '#e8d5a3',
+          bg: '#0d0f14',
+          surface: '#12151c',
+          text: '#ddd8cc',
+          muted: '#8a8478',
+          border: 'rgba(200, 180, 120, 0.14)',
+          success: '#10B981',
+          warning: '#c9a84c',
+          error: '#EF4444'
+        },
+        ram: {
+          bg: '#0d0f14',
+          bg2: '#12151c',
+          bg3: '#181c25',
+          gold: '#c9a84c',
+          goldLight: '#e8d5a3',
+          bronze: '#8b6914',
+          border: 'rgba(200, 180, 120, 0.14)',
+          text: '#ddd8cc',
+          muted: '#8a8478',
+          ivory: '#f5f0e8'
         },
         zenith: {
-          50: '#f5f3ff',
-          100: '#ede9fe',
-          200: '#ddd6fe',
-          300: '#c4b5fd',
-          400: '#a78bfa',
-          500: '#8b5cf6',
-          600: '#7c3aed',
-          700: '#6d28d9',
-          800: '#5b21b6',
-          900: '#4c1d95',
-          950: '#2e1065'
+          50: '#fdfbf7',
+          100: '#fbf7ee',
+          200: '#f5edda',
+          300: '#eedfbc',
+          400: '#e0c78a',
+          500: '#c9a84c',
+          600: '#b8943d',
+          700: '#997631',
+          800: '#8b6914',
+          900: '#684d12',
+          950: '#382806'
         }
       },
       animation: {
@@ -57,7 +69,7 @@ export default {
         },
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
-          '100%': { backgroundPosition: '200% 0' }
+          '100%': { backgroundPosition: '200% 0' },
         }
       }
     },
