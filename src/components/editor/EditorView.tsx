@@ -8,6 +8,7 @@ import { ProjectDetailModal } from '../shared/ProjectDetailModal';
 import { COLOR_PALETTES, FONT_CLASSES } from '../../utils/themeEngine';
 import { rewriteHeadline, rewriteProjectDescription, RewriteTone } from '../../services/ai/groq';
 import { TEMPLATE_REGISTRY, TEMPLATE_MARKETPLACE_CATEGORIES } from '../../utils/templateRegistry';
+import { TemplatePreviewThumbnail } from '../shared/TemplatePreviewThumbnail';
 import { 
   Laptop, Tablet, Smartphone, Download, Globe, Undo2, Redo2, 
   Layers, Sliders, Type, Palette, Code2, ArrowUpRight, Check, Eye, 
@@ -250,34 +251,34 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
   });
 
   return (
-    <div className="h-screen bg-[#F5F7FA] text-[#172033] flex flex-col overflow-hidden font-sans selection:bg-blue-600 selection:text-white">
+    <div className="h-screen bg-[#090A0F] text-[#F8FAFC] flex flex-col overflow-hidden font-sans selection:bg-blue-600 selection:text-white">
       
       {/* 1. TOP NAVIGATION BAR */}
-      <header className="h-14 border-b border-[#E2E8F0] bg-white px-4 sm:px-6 flex items-center justify-between z-20 flex-shrink-0 shadow-sm">
+      <header className="h-14 border-b border-[#1E2330] bg-[#0D0F17] px-4 sm:px-6 flex items-center justify-between z-20 flex-shrink-0 shadow-md">
         
         {/* Left: Brand, Back, and Project Identity */}
         <div className="flex items-center gap-3">
           <button 
             onClick={onBackToVerification}
-            className="flex items-center gap-1.5 text-xs font-semibold text-[#64748B] hover:text-[#172033] transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[#94A3B8] hover:text-white transition-colors"
             title="Return to fact verification"
           >
             <ArrowLeft size={14} />
             <span className="hidden sm:inline">Verify</span>
           </button>
 
-          <div className="h-4 w-px bg-[#E2E8F0]" />
+          <div className="h-4 w-px bg-[#1E2330]" />
 
           <div className="flex items-center gap-2">
-            <span className="font-bold text-xs sm:text-sm text-[#14213D]">{profile.personal.name}</span>
-            <span className="text-xs text-[#64748B] hidden md:inline">/</span>
-            <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 hidden md:inline">
+            <span className="font-bold text-xs sm:text-sm text-white">{profile.personal.name}</span>
+            <span className="text-xs text-slate-500 hidden md:inline">/</span>
+            <span className="text-[11px] font-medium px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 hidden md:inline">
               {TEMPLATE_REGISTRY.find(t => t.id === theme.templateId)?.title || theme.templateId}
             </span>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1.5 text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+          <div className="hidden lg:flex items-center gap-1.5 text-[11px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             <span>Saved locally</span>
           </div>
         </div>
@@ -286,13 +287,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
         <div className="flex items-center gap-2">
           
           {/* Responsive Viewport Controls */}
-          <div className="flex items-center p-0.5 rounded-lg bg-slate-100 border border-[#E2E8F0]">
+          <div className="flex items-center p-0.5 rounded-lg bg-[#11141E] border border-[#1E2330]">
             <button
               onClick={() => setViewport('desktop')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'desktop' 
-                  ? 'bg-white text-[#14213D] shadow-sm font-semibold' 
-                  : 'text-[#64748B] hover:text-[#172033]'
+                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
+                  : 'text-[#94A3B8] hover:text-white'
               }`}
               title="Desktop (1200px+)"
             >
@@ -303,8 +304,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               onClick={() => setViewport('tablet')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'tablet' 
-                  ? 'bg-white text-[#14213D] shadow-sm font-semibold' 
-                  : 'text-[#64748B] hover:text-[#172033]'
+                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
+                  : 'text-[#94A3B8] hover:text-white'
               }`}
               title="Tablet (768px)"
             >
@@ -315,8 +316,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               onClick={() => setViewport('mobile')}
               className={`flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all ${
                 viewport === 'mobile' 
-                  ? 'bg-white text-[#14213D] shadow-sm font-semibold' 
-                  : 'text-[#64748B] hover:text-[#172033]'
+                  ? 'bg-[#1E2435] text-white shadow-xs font-semibold border border-slate-700/60' 
+                  : 'text-[#94A3B8] hover:text-white'
               }`}
               title="Mobile (375px)"
             >
@@ -326,11 +327,11 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           </div>
 
           {/* Undo / Redo */}
-          <div className="hidden sm:flex items-center p-0.5 rounded-lg bg-slate-100 border border-[#E2E8F0]">
+          <div className="hidden sm:flex items-center p-0.5 rounded-lg bg-[#11141E] border border-[#1E2330]">
             <button
               onClick={handleUndo}
               disabled={historyIndex === 0}
-              className={`p-1 rounded ${historyIndex === 0 ? 'opacity-30 cursor-not-allowed text-slate-400' : 'text-[#64748B] hover:text-[#172033] hover:bg-white'}`}
+              className={`p-1 rounded ${historyIndex === 0 ? 'opacity-30 cursor-not-allowed text-slate-600' : 'text-[#94A3B8] hover:text-white hover:bg-[#1E2435]'}`}
               title="Undo change (Cmd+Z)"
             >
               <Undo2 size={13} />
@@ -338,7 +339,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
             <button
               onClick={handleRedo}
               disabled={historyIndex === history.length - 1}
-              className={`p-1 rounded ${historyIndex === history.length - 1 ? 'opacity-30 cursor-not-allowed text-slate-400' : 'text-[#64748B] hover:text-[#172033] hover:bg-white'}`}
+              className={`p-1 rounded ${historyIndex === history.length - 1 ? 'opacity-30 cursor-not-allowed text-slate-600' : 'text-[#94A3B8] hover:text-white hover:bg-[#1E2435]'}`}
               title="Redo change"
             >
               <Redo2 size={13} />
@@ -354,18 +355,18 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
             onClick={() => setIsCopilotOpen(prev => !prev)}
             className={`px-2.5 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
               isCopilotOpen 
-                ? 'bg-blue-50 text-[#2563EB] border border-blue-200' 
-                : 'text-[#64748B] hover:text-[#172033] hover:bg-slate-100 border border-transparent'
+                ? 'bg-blue-500/10 text-blue-400 border border-blue-500/30' 
+                : 'text-[#94A3B8] hover:text-white hover:bg-[#151926] border border-transparent'
             }`}
             title="Toggle AI Copilot"
           >
-            <Bot size={14} className="text-[#2563EB]" />
+            <Bot size={14} className="text-[#3B82F6]" />
             <span className="hidden sm:inline">AI Copilot</span>
           </button>
 
           <button
             onClick={handleDownloadResume}
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2E8F0] text-xs font-medium text-[#172033] hover:bg-slate-50 transition-colors"
+            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1E2330] text-xs font-medium text-slate-200 hover:bg-[#151926] hover:text-white transition-colors"
             title="Download formatted resume markdown"
           >
             <FileDown size={13} />
@@ -374,7 +375,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
           <button
             onClick={() => onDownloadZip(profile, theme)}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#E2E8F0] text-xs font-medium text-[#172033] hover:bg-slate-50 transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#1E2330] text-xs font-medium text-slate-200 hover:bg-[#151926] hover:text-white transition-colors"
             title="Export clean HTML/React/Tailwind ZIP"
           >
             <Download size={13} />
@@ -383,7 +384,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
           <button
             onClick={() => onPublish(profile, theme)}
-            className="px-3.5 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs shadow-sm shadow-blue-500/20 flex items-center gap-1.5 transition-all"
+            className="px-3.5 py-1.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-xs shadow-md shadow-blue-500/25 flex items-center gap-1.5 transition-all"
           >
             <Globe size={13} />
             <span>Publish Live</span>
@@ -397,10 +398,10 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
       <div className="flex-1 flex overflow-hidden relative">
         
         {/* LEFT PANEL: Builder Tools (Width 340px) */}
-        <div className="w-80 lg:w-88 border-r border-[#E2E8F0] bg-white flex flex-col z-10 flex-shrink-0 shadow-sm">
+        <div className="w-80 lg:w-88 border-r border-[#1E2330] bg-[#0D0F17] flex flex-col z-10 flex-shrink-0 shadow-xl">
           
           {/* Navigation Tabs Header */}
-          <div className="grid grid-cols-4 border-b border-[#E2E8F0] p-1 gap-1 text-[11px] font-semibold bg-slate-50/70">
+          <div className="grid grid-cols-4 border-b border-[#1E2330] p-1 gap-1 text-[11px] font-semibold bg-[#11141E]/80">
             {[
               { id: 'templates', label: 'Templates', icon: <Layers size={13} /> },
               { id: 'theme', label: 'Theme', icon: <Palette size={13} /> },
@@ -412,8 +413,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 onClick={() => setActiveLeftTab(tab.id as any)}
                 className={`py-2 px-1 rounded-md flex flex-col items-center justify-center gap-1 transition-all ${
                   activeLeftTab === tab.id 
-                    ? 'bg-white text-[#2563EB] shadow-xs font-bold border border-[#E2E8F0]' 
-                    : 'text-[#64748B] hover:text-[#172033]'
+                    ? 'bg-[#1E2435] text-blue-400 shadow-xs font-bold border border-slate-700/60' 
+                    : 'text-slate-400 hover:text-white'
                 }`}
               >
                 {tab.icon}
@@ -428,13 +429,13 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
               
               {/* Search Bar */}
               <div className="relative">
-                <Search size={14} className="absolute left-3 top-2.5 text-slate-400" />
+                <Search size={14} className="absolute left-3 top-2.5 text-slate-500" />
                 <input
                   type="text"
                   placeholder="Search 24+ templates..."
                   value={templateSearchQuery}
                   onChange={e => setTemplateSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-slate-50 border border-[#CBD5E1] text-[#172033] text-xs placeholder:text-slate-400 focus:bg-white focus:outline-none focus:border-[#2563EB]"
+                  className="w-full pl-9 pr-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white text-xs placeholder:text-slate-500 focus:outline-none focus:border-[#3B82F6]"
                 />
               </div>
 
@@ -446,8 +447,8 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                     onClick={() => setSelectedCategoryFilter(cat.id)}
                     className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-all ${
                       selectedCategoryFilter === cat.id
-                        ? 'bg-[#14213D] text-white font-semibold'
-                        : 'bg-slate-100 text-[#64748B] hover:text-[#172033] hover:bg-slate-200'
+                        ? 'bg-[#1E2435] text-white font-semibold border border-slate-700/60'
+                        : 'bg-[#11141E] text-slate-400 hover:text-white border border-[#1E2330]'
                     }`}
                   >
                     {cat.label.replace(' Templates', '')}
@@ -455,7 +456,7 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                 ))}
               </div>
 
-              {/* Template Cards List */}
+              {/* Template Cards List with Thumbnails */}
               <div className="space-y-3">
                 {filteredTemplates.map(t => {
                   const isSelected = theme.templateId === t.id;
@@ -463,37 +464,45 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
                     <div
                       key={t.id}
                       onClick={() => handleThemeChange(prev => ({ ...prev, templateId: t.id }))}
-                      className={`cursor-pointer p-3.5 rounded-xl border transition-all text-left flex flex-col justify-between space-y-2 ${
+                      className={`cursor-pointer p-3 rounded-xl border transition-all text-left flex flex-col justify-between space-y-2.5 ${
                         isSelected 
-                          ? 'border-[#2563EB] bg-blue-50/40 shadow-xs ring-1 ring-[#2563EB]' 
-                          : 'border-[#E2E8F0] bg-white hover:border-[#CBD5E1] hover:bg-slate-50'
+                          ? 'border-[#3B82F6] bg-[#141C2E] shadow-lg ring-1 ring-[#3B82F6]' 
+                          : 'border-[#1E2330] bg-[#11141E] hover:border-[#2F374C] hover:bg-[#151926]'
                       }`}
                     >
+                      {/* Visual Mockup Thumbnail */}
+                      <TemplatePreviewThumbnail 
+                        templateId={t.id}
+                        title={t.title}
+                        badge={t.badge}
+                        className="h-24 w-full"
+                      />
+
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-1.5">
-                          <span className="font-bold text-xs text-[#14213D]">{t.title}</span>
+                          <span className="font-bold text-xs text-white">{t.title}</span>
                           {t.badge && (
-                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-slate-100 text-[#64748B]">
+                            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-[#181C28] text-blue-400 border border-[#252B3B]">
                               {t.badge}
                             </span>
                           )}
                         </div>
                         {isSelected ? (
-                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#2563EB] text-white">
+                          <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-[#3B82F6] text-white">
                             Active
                           </span>
                         ) : (
-                          <span className="text-[10px] font-medium text-blue-600 hover:underline">
+                          <span className="text-[10px] font-medium text-blue-400 hover:underline">
                             Select
                           </span>
                         )}
                       </div>
 
-                      <div className="text-[11px] font-medium text-[#2563EB]">
+                      <div className="text-[11px] font-medium text-blue-400">
                         {t.layoutStyle}
                       </div>
 
-                      <p className="text-[11px] text-[#64748B] leading-relaxed line-clamp-2">
+                      <p className="text-[11px] text-[#94A3B8] leading-relaxed line-clamp-2">
                         {t.desc}
                       </p>
                     </div>
@@ -818,9 +827,9 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
         </div>
 
         {/* CENTER PANEL: LIVE RESPONSIVE WEBSITE CANVAS */}
-        <div className="flex-1 bg-[#EEF2F6] overflow-y-auto flex items-start justify-center p-4 sm:p-6 transition-all">
+        <div className="flex-1 bg-[#050608] overflow-y-auto flex items-start justify-center p-4 sm:p-6 transition-all">
           <div 
-            className={`transition-all duration-300 rounded-xl shadow-lg border border-[#CBD5E1] overflow-hidden bg-white min-h-[90vh] ${
+            className={`transition-all duration-300 rounded-xl shadow-2xl border border-[#1E2330] overflow-hidden bg-black min-h-[90vh] ${
               viewport === 'desktop' 
                 ? 'w-full max-w-6xl' 
                 : viewport === 'tablet' 
@@ -830,14 +839,14 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
           >
             {/* Viewport Frame Chrome Bar (for mobile & tablet) */}
             {viewport !== 'desktop' && (
-              <div className="bg-slate-100 border-b border-[#CBD5E1] px-4 py-2 flex items-center justify-between text-[11px] text-[#64748B]">
+              <div className="bg-[#0D0F17] border-b border-[#1E2330] px-4 py-2 flex items-center justify-between text-[11px] text-[#94A3B8]">
                 <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-slate-300" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
                 </div>
                 <span className="font-mono">{viewport === 'tablet' ? '768 × 1024' : '375 × 812'}</span>
-                <span className="font-medium text-[#172033]">{profile.personal.name}</span>
+                <span className="font-medium text-white">{profile.personal.name}</span>
               </div>
             )}
 
@@ -852,23 +861,23 @@ ${profile.education.map(ed => `- ${ed.degree}, ${ed.institution} (${ed.startDate
 
         {/* RIGHT PANEL: AI COPILOT PRODUCTIVITY ASSISTANT (Width 340px) */}
         {isCopilotOpen && (
-          <div className="w-80 lg:w-88 border-l border-[#E2E8F0] bg-white flex flex-col z-10 flex-shrink-0 shadow-sm animate-fadeIn">
+          <div className="w-80 lg:w-88 border-l border-[#1E2330] bg-[#0D0F17] flex flex-col z-10 flex-shrink-0 shadow-xl animate-fadeIn">
             
             {/* Copilot Header */}
-            <div className="p-3.5 border-b border-[#E2E8F0] flex items-center justify-between bg-slate-50/70">
+            <div className="p-3.5 border-b border-[#1E2330] flex items-center justify-between bg-[#11141E]/80">
               <div className="flex items-center gap-2">
-                <div className="w-6 h-6 rounded bg-blue-100 text-[#2563EB] flex items-center justify-center">
+                <div className="w-6 h-6 rounded bg-blue-500/10 text-blue-400 flex items-center justify-center border border-blue-500/20">
                   <Bot size={15} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xs text-[#14213D]">Portfolio Copilot</h3>
-                  <div className="text-[10px] text-[#64748B]">Productivity & Writing Assistant</div>
+                  <h3 className="font-bold text-xs text-white">Portfolio Copilot</h3>
+                  <div className="text-[10px] text-[#94A3B8]">Productivity & Writing Assistant</div>
                 </div>
               </div>
 
               <button 
                 onClick={() => setIsCopilotOpen(false)}
-                className="text-slate-400 hover:text-[#172033] p-1"
+                className="text-slate-400 hover:text-white p-1"
                 title="Collapse Copilot"
               >
                 <X size={15} />

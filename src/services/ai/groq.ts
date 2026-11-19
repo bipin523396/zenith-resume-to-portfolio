@@ -127,158 +127,103 @@ EXPLANATION: [1-sentence explanation]`;
 }
 
 export function recommendTemplateAI(profile: CanonicalProfile): TemplateRecommendation[] {
-  const projectCount = profile.projects?.length || 0;
-  const experienceCount = profile.experience?.length || 0;
-  const skillCount = profile.skills?.all?.length || 0;
-  const hasDesignLinks = Boolean(profile.socialLinks?.dribbble || profile.socialLinks?.behance);
-  const isStudent = profile.education.some(e => e.endDate >= '2025' || /student|b\.tech|bachelor/i.test(e.degree));
-
   const recommendations: TemplateRecommendation[] = [];
 
-  if (isStudent || (projectCount >= 2 && experienceCount <= 1)) {
-    recommendations.push({
-      templateId: 'editorial',
-      title: 'Editorial Showcase',
-      matchScore: 98,
-      reason: 'Your profile has standout individual projects and academic achievements. Editorial typography gives them an award-winning spotlight.',
-      badge: 'Best Match'
-    });
-    recommendations.push({
-      templateId: 'bento',
-      title: 'Interactive Bento Grid',
-      matchScore: 94,
-      reason: 'High density of skills, hackathons, and projects makes a modular bento grid visually arresting and interactive.'
-    });
-    recommendations.push({
-      templateId: 'terminal',
-      title: 'Developer Terminal CLI',
-      matchScore: 90,
-      reason: 'Highlights your deep technical command and algorithms/ML stack with a live interactive shell.'
-    });
-    recommendations.push({
-      templateId: 'casestudy',
-      title: 'Visual Case Study',
-      matchScore: 88,
-      reason: 'Gives each project a dedicated deep-dive problem/solution page.'
-    });
-  } else if (experienceCount >= 3) {
-    recommendations.push({
-      templateId: 'timeline',
-      title: 'Career Journey (Timeline)',
-      matchScore: 97,
-      reason: 'With rich multi-year experience and career progression across top companies, a chronological journey tells your leadership story best.',
-      badge: 'Recommended'
-    });
-    recommendations.push({
-      templateId: 'editorial',
-      title: 'Editorial Showcase',
-      matchScore: 92,
-      reason: 'Clean, modern, and authoritative for staff and senior roles.'
-    });
-    recommendations.push({
-      templateId: 'bento',
-      title: 'Modern Bento Grid',
-      matchScore: 89,
-      reason: 'Compact overview of leadership, scale metrics, and open-source contributions.'
-    });
-  } else if (hasDesignLinks) {
-    recommendations.push({
-      templateId: 'creative',
-      title: 'Creative Canvas',
-      matchScore: 99,
-      reason: 'Your visual artifacts, design systems, and creative skills shine under fluid ambient gradients and micro-interactions.',
-      badge: 'Best for Design'
-    });
-    recommendations.push({
-      templateId: 'casestudy',
-      title: 'Visual Case Study',
-      matchScore: 95,
-      reason: 'Detailed UX breakdowns with problem, solution, user feedback, and outcomes.'
-    });
-  } else {
-    recommendations.push({
-      templateId: 'editorial',
-      title: 'Editorial Showcase',
-      matchScore: 96,
-      reason: 'Balanced hierarchy suitable for any modern software engineer or technologist.',
-      badge: 'Featured'
-    });
-    recommendations.push({
-      templateId: 'bento',
-      title: 'Bento Grid',
-      matchScore: 93,
-      reason: 'Modern tech-forward layout that highlights diverse skills and projects.'
-    });
-  }
+  // Premier Flagship #1: Full-Stack Architecture (inspired by ramsah.netlify.app)
+  recommendations.push({
+    templateId: 'fullstack',
+    title: 'Full-Stack Architecture',
+    matchScore: 99,
+    reason: 'Flagship engineering portfolio with 3D glass card, categorized tech radar, connected vertical timeline, and architectural case studies.',
+    badge: 'Premier Match #1'
+  });
 
-  // Ensure all 22 templates are present in the list with titles and reasons
-  const allTemplates: TemplateType[] = [
-    'editorial', 'bento', 'timeline', 'terminal', 'casestudy', 'creative',
-    'magicui', 'hoverdev', 'framer', 'skipper', 'aurora', 'minimalist',
-    'devops', 'aiml', 'gamecraft', 'productdesigner', 'mobiledev',
-    'academic', 'fintech', 'glassdark', 'matrixcode', 'spotlight'
+  // Position #2: Architectural Luxury
+  recommendations.push({
+    templateId: 'luxury',
+    title: 'Architectural Luxury',
+    matchScore: 97,
+    reason: 'Ultra-refined stealth obsidian dark mode, gold and platinum metallic typography, and bespoke architectural layout.',
+    badge: 'Obsidian Gold #2'
+  });
+
+  // Position #3: Interactive Bento Grid
+  recommendations.push({
+    templateId: 'bentogrid',
+    title: 'Interactive Bento Grid',
+    matchScore: 95,
+    reason: 'Modular asymmetric cards, interactive metrics, and live tech stack radar for full-stack impact.',
+    badge: 'Interactive #3'
+  });
+
+  // Position #4: Modern Minimalist
+  recommendations.push({
+    templateId: 'minimalist',
+    title: 'Modern Minimalist',
+    matchScore: 93,
+    reason: 'Swiss clean typography, refined whitespace, and structured project index for maximum readability.',
+    badge: 'Clean #4'
+  });
+
+  // Additional curated layouts
+  const additionalTemplates: TemplateType[] = [
+    'editorial', 'aimlresearcher', 'datascientist', 'personalbrand',
+    'spotlight', 'softwareengineer', 'casestudy', 'creativedesigner',
+    'executive', 'magicui', 'gamecraft', 'fintech', 'devops', 'mobiledev'
   ];
 
   const titles: Record<string, string> = {
+    fullstack: 'Full-Stack Architecture',
+    luxury: 'Architectural Luxury',
+    bentogrid: 'Interactive Bento Grid',
+    minimalist: 'Modern Minimalist',
     editorial: 'Editorial Showcase',
-    bento: 'Interactive Bento Grid',
-    timeline: 'Career Journey (Timeline)',
-    terminal: 'Developer Terminal CLI',
+    aimlresearcher: 'AI / ML Researcher',
+    datascientist: 'Data & Quantitative',
+    personalbrand: 'Personal Brand Authority',
+    spotlight: 'Modern Spotlight & Beam',
+    softwareengineer: 'Technical Documentation',
     casestudy: 'Visual Case Study',
-    creative: 'Creative Canvas',
+    creativedesigner: 'Creative Studio',
+    executive: 'Executive Corporate',
     magicui: 'Magic UI Spotlight & Dock',
-    hoverdev: 'Hover.dev 3D Spring Cards',
-    framer: 'Framer Fluid Kinetic',
-    skipper: 'Skipper Cyberpunk HUD',
-    aurora: 'Aurora Glassmorphism',
-    minimalist: 'Swiss Bauhaus Minimal',
-    devops: 'Systems & Cloud Topology',
-    aiml: 'Neural AI & ML Matrix',
     gamecraft: 'Retro Arcade & Game Dev RPG',
-    productdesigner: 'Figma Canvas & Design System',
-    mobiledev: 'iOS Dynamic Island & App Store',
-    academic: 'Research Scholar & arXiv',
-    fintech: 'Fintech & High-Frequency Quant',
-    glassdark: 'Luminescence Obsidian',
-    matrixcode: 'Hacker Cyber Matrix Rain',
-    spotlight: 'Modern Spotlight & Beam'
+    fintech: 'Fintech & Quant',
+    devops: 'Systems & Cloud Topology',
+    mobiledev: 'iOS Dynamic Island'
   };
 
   const reasons: Record<string, string> = {
+    fullstack: 'Flagship systems architecture layout with categorized tech radar.',
+    luxury: 'Obsidian black and gold architectural aesthetic.',
+    bentogrid: 'Modular bento cards with interactive metrics.',
+    minimalist: 'Clean Swiss typography with project directory.',
     editorial: 'Award-winning typography and deep case study focus.',
-    bento: 'Modular grid cards inspired by modern dashboard aesthetics.',
-    timeline: 'Chronological progression highlighting career milestones.',
-    terminal: 'Interactive Unix command-line shell with live commands.',
-    casestudy: 'Blueprint deep-dives comparing problems to solutions.',
-    creative: 'Avant-garde styling with glowing ambient orbs.',
-    magicui: 'Spotlight cursor glow, retro grid, and floating macOS dock.',
-    hoverdev: '3D perspective tilt cards, magnetic triggers, and spring physics.',
-    framer: 'Kinetic spring layouts, fluid pills, and seamless state shifts.',
-    skipper: 'Sci-fi telemetry HUD with glowing neon tracing beams.',
-    aurora: 'Polar aurora waves with frosted glass crystalline badges.',
-    minimalist: 'High-contrast monochrome Swiss typographic grid.',
-    devops: 'Kubernetes cluster topology with 99.99% uptime monitor.',
-    aiml: 'Frontier AI model parameter metrics and benchmark gauges.',
-    gamecraft: 'Level 99 RPG HUD with quest logs and inventory rarity slots.',
-    productdesigner: 'Figma 1440px artboards, color tokens, and user flow frames.',
-    mobiledev: 'App Store showcase featuring Dynamic Island mockup.',
-    academic: 'Peer-reviewed arXiv paper format with BibTeX export.',
-    fintech: 'Algorithmic trading terminal with financial ticker marquee.',
-    glassdark: 'Stealth pitch-black glass canvas with iridescent highlights.',
-    matrixcode: 'Cyber matrix glyph rain with encrypted payload disclosure.',
-    spotlight: 'Radial spotlight tracking with searchable skills radar.'
+    aimlresearcher: 'Neural matrix layout with arXiv links and parameter metrics.',
+    datascientist: 'Statistical modeling charts and quantitative analysis.',
+    personalbrand: 'High-impact personal branding with venture metric counters.',
+    spotlight: 'Dynamic illuminated spotlight beam showcasing featured builds.',
+    softwareengineer: 'Linear-inspired developer documentation format.',
+    casestudy: 'Dedicated deep-dive problem/solution UX layout.',
+    creativedesigner: 'Artistic composition with ambient lighting and galleries.',
+    executive: 'C-level strategic milestones and corporate achievements.',
+    magicui: 'Fluid spotlight card motion and dock navigation.',
+    gamecraft: 'Retro 8-bit dark arcade theme with level stats.',
+    fintech: 'High-frequency telemetry and quantitative proofs.',
+    devops: 'Systems architecture blueprints and cloud topologies.',
+    mobiledev: 'Mobile first dynamic island and app store previews.'
   };
 
-  allTemplates.forEach(t => {
-    if (!recommendations.some(r => r.templateId === t)) {
+  for (const tpl of additionalTemplates) {
+    if (!recommendations.some(r => r.templateId === tpl)) {
       recommendations.push({
-        templateId: t,
-        title: titles[t],
-        matchScore: 82,
-        reason: reasons[t] || 'Clean alternative visual architecture.'
+        templateId: tpl,
+        title: titles[tpl] || tpl,
+        matchScore: 85,
+        reason: reasons[tpl] || 'Professional portfolio architecture.'
       });
     }
-  });
+  }
 
   return recommendations;
 }

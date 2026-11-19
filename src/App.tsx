@@ -290,16 +290,16 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] text-[#172033] font-sans antialiased selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#090A0F] text-[#F8FAFC] font-sans antialiased selection:bg-blue-600 selection:text-white">
       
       {/* Cloud Loading Screen for Public Portfolios */}
       {isLoadingCloudPortfolio && (
-        <div className="fixed inset-0 z-50 bg-[#F8FAFC] flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
-          <div className="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center shadow-xs mb-4">
-            <span className="w-6 h-6 border-2 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
+        <div className="fixed inset-0 z-50 bg-[#090A0F]/95 backdrop-blur-md flex flex-col items-center justify-center p-6 text-center animate-fadeIn">
+          <div className="w-14 h-14 rounded-2xl bg-[#11141E] border border-blue-500/30 flex items-center justify-center shadow-lg mb-4">
+            <span className="w-6 h-6 border-2 border-[#3B82F6] border-t-transparent rounded-full animate-spin" />
           </div>
-          <h2 className="text-base font-bold text-[#14213D] mb-1">Loading Live Portfolio</h2>
-          <p className="text-xs text-[#64748B] max-w-xs">
+          <h2 className="text-base font-bold text-white mb-1">Loading Live Portfolio</h2>
+          <p className="text-xs text-[#94A3B8] max-w-xs">
             Fetching verified profile, theme configuration, and interactive projects from the cloud...
           </p>
         </div>

@@ -104,25 +104,25 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
   const isConfigured = Boolean(keys.supabaseUrl && keys.supabaseAnonKey);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn font-sans">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn font-sans">
       <div 
-        className="w-full max-w-2xl rounded-2xl border border-[#E2E8F0] bg-white text-[#172033] shadow-xl p-6 sm:p-7 space-y-6 relative overflow-hidden max-h-[90vh] flex flex-col"
+        className="w-full max-w-2xl rounded-2xl border border-[#1E2330] bg-[#11141E] text-[#F8FAFC] shadow-2xl p-6 sm:p-7 space-y-6 relative overflow-hidden max-h-[90vh] flex flex-col"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4">
+        <div className="flex items-center justify-between border-b border-[#1E2330] pb-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-50 text-[#2563EB] border border-blue-200">
+            <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
               <Database size={18} />
             </div>
             <div>
-              <h2 className="text-base font-bold text-[#14213D]">Cloud Database & API Credentials</h2>
-              <div className="text-xs text-[#64748B]">Connect Supabase to host portfolios globally across devices</div>
+              <h2 className="text-base font-bold text-white">Cloud Database & API Credentials</h2>
+              <div className="text-xs text-[#94A3B8]">Connect Supabase to host portfolios globally across devices</div>
             </div>
           </div>
 
           <button 
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-[#172033] hover:bg-slate-100 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-[#1E2435] transition-colors"
           >
             <X size={18} />
           </button>
@@ -131,62 +131,62 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
         <form onSubmit={handleSave} className="space-y-5 overflow-y-auto pr-1 flex-1">
 
           {/* ================= SUPABASE SECTION ================= */}
-          <div className="p-4 rounded-xl bg-slate-50 border border-blue-100 space-y-3.5">
+          <div className="p-4 rounded-xl bg-[#0D0F17] border border-[#1E2330] space-y-3.5">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <Database size={16} className="text-[#2563EB]" />
-                <span className="text-xs font-bold text-[#14213D] uppercase tracking-wide">
+                <Database size={16} className="text-[#3B82F6]" />
+                <span className="text-xs font-bold text-white uppercase tracking-wide">
                   Supabase Cloud Connection
                 </span>
               </div>
               <span className={`text-[10px] font-semibold px-2 py-0.5 rounded ${
                 isConfigured 
-                  ? 'bg-emerald-100 text-emerald-800' 
-                  : 'bg-slate-200 text-slate-700'
+                  ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                  : 'bg-slate-800 text-slate-400 border border-slate-700'
               }`}>
                 {isConfigured ? 'Configured' : 'Not Connected'}
               </span>
             </div>
 
-            <p className="text-xs text-[#64748B]">
+            <p className="text-xs text-[#94A3B8]">
               Publishes portfolios to your Supabase PostgreSQL cloud database, making shared links accessible worldwide on any device.
             </p>
 
             <div className="space-y-3">
               <div>
-                <label className="block text-[11px] font-semibold text-[#14213D] mb-1">
+                <label className="block text-[11px] font-semibold text-slate-300 mb-1">
                   Supabase Project URL
                 </label>
                 <input 
                   type="text"
                   value={keys.supabaseUrl || ''}
                   onChange={e => setKeys(prev => ({ ...prev, supabaseUrl: e.target.value }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] font-mono text-xs focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white font-mono text-xs focus:outline-none focus:border-[#3B82F6]"
                   placeholder="https://your-project-id.supabase.co"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-semibold text-[#14213D] mb-1">
+                <label className="block text-[11px] font-semibold text-slate-300 mb-1">
                   Supabase Anon Public API Key
                 </label>
                 <input 
                   type="password"
                   value={keys.supabaseAnonKey || ''}
                   onChange={e => setKeys(prev => ({ ...prev, supabaseAnonKey: e.target.value }))}
-                  className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] font-mono text-xs focus:outline-none focus:border-[#2563EB]"
+                  className="w-full px-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white font-mono text-xs focus:outline-none focus:border-[#3B82F6]"
                   placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
                 />
               </div>
             </div>
 
             {/* Test Connection Button & Status */}
-            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-slate-200">
+            <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-t border-[#1E2330]">
               <button
                 type="button"
                 onClick={handleTestSupabase}
                 disabled={testingSupabase || !keys.supabaseUrl || !keys.supabaseAnonKey}
-                className="px-3.5 py-1.5 rounded-lg bg-white border border-[#CBD5E1] hover:bg-slate-100 disabled:opacity-50 text-xs font-semibold text-[#172033] flex items-center justify-center gap-1.5 transition-colors"
+                className="px-3.5 py-1.5 rounded-lg bg-[#141926] border border-[#22283A] hover:bg-[#1A2030] disabled:opacity-50 text-xs font-semibold text-white flex items-center justify-center gap-1.5 transition-colors"
               >
                 <RefreshCw size={12} className={testingSupabase ? 'animate-spin text-[#2563EB]' : 'text-slate-600'} />
                 <span>{testingSupabase ? 'Testing Connection...' : 'Test Supabase Connection'}</span>
@@ -250,12 +250,12 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
             </div>
 
             {/* Cerebras */}
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-[#E2E8F0] space-y-2">
+            <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-[#1E2330] space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-[#14213D] flex items-center gap-1.5">
-                  <Cpu size={14} className="text-[#2563EB]" /> Cerebras Inference Key (Resume Extractor)
+                <label className="text-xs font-semibold text-white flex items-center gap-1.5">
+                  <Cpu size={14} className="text-[#3B82F6]" /> Cerebras Inference Key (Resume Extractor)
                 </label>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   Active
                 </span>
               </div>
@@ -263,18 +263,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
                 type="password"
                 value={keys.cerebras}
                 onChange={e => setKeys(prev => ({ ...prev, cerebras: e.target.value }))}
-                className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] font-mono text-xs focus:outline-none focus:border-[#2563EB]"
+                className="w-full px-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white font-mono text-xs focus:outline-none focus:border-[#3B82F6]"
                 placeholder="csk-..."
               />
             </div>
 
             {/* Groq */}
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-[#E2E8F0] space-y-2">
+            <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-[#1E2330] space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-[#14213D] flex items-center gap-1.5">
-                  <Sparkles size={14} className="text-[#2563EB]" /> Groq API Key (AI Copilot & Polish)
+                <label className="text-xs font-semibold text-white flex items-center gap-1.5">
+                  <Sparkles size={14} className="text-[#3B82F6]" /> Groq API Key (AI Copilot & Polish)
                 </label>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   Active
                 </span>
               </div>
@@ -282,18 +282,18 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
                 type="password"
                 value={keys.groq}
                 onChange={e => setKeys(prev => ({ ...prev, groq: e.target.value }))}
-                className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] font-mono text-xs focus:outline-none focus:border-[#2563EB]"
+                className="w-full px-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white font-mono text-xs focus:outline-none focus:border-[#3B82F6]"
                 placeholder="gsk_..."
               />
             </div>
 
             {/* Cloudflare */}
-            <div className="p-3.5 rounded-xl bg-slate-50 border border-[#E2E8F0] space-y-2">
+            <div className="p-3.5 rounded-xl bg-[#0D0F17] border border-[#1E2330] space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-[#14213D] flex items-center gap-1.5">
-                  <Globe size={14} className="text-[#2563EB]" /> Cloudflare AI Key (Edge Functions & Fallback)
+                <label className="text-xs font-semibold text-white flex items-center gap-1.5">
+                  <Globe size={14} className="text-[#3B82F6]" /> Cloudflare AI Key (Edge Functions & Fallback)
                 </label>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                   Active
                 </span>
               </div>
@@ -301,28 +301,28 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({ onClose }) => {
                 type="password"
                 value={keys.cloudflare}
                 onChange={e => setKeys(prev => ({ ...prev, cloudflare: e.target.value }))}
-                className="w-full px-3 py-1.5 rounded-lg bg-white border border-[#CBD5E1] text-[#172033] font-mono text-xs focus:outline-none focus:border-[#2563EB]"
+                className="w-full px-3 py-1.5 rounded-lg bg-[#11141E] border border-[#22283A] text-white font-mono text-xs focus:outline-none focus:border-[#3B82F6]"
                 placeholder="Cloudflare API Token"
               />
             </div>
           </div>
 
-          <div className="flex items-center gap-1.5 text-xs text-[#64748B]">
-            <ShieldCheck size={14} className="text-emerald-600" />
+          <div className="flex items-center gap-1.5 text-xs text-[#94A3B8]">
+            <ShieldCheck size={14} className="text-emerald-400" />
             <span>Credentials are securely stored client-side in localStorage only.</span>
           </div>
 
-          <div className="pt-3 border-t border-[#E2E8F0] flex items-center justify-end gap-2">
+          <div className="pt-3 border-t border-[#1E2330] flex items-center justify-end gap-2">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg border border-[#E2E8F0] text-xs font-medium text-[#64748B] hover:text-[#172033] hover:bg-slate-50"
+              className="px-4 py-2 rounded-lg border border-[#1E2330] text-xs font-medium text-[#94A3B8] hover:text-white hover:bg-[#151926]"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-5 py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+              className="px-5 py-2 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
             >
               {saved ? <Check size={14} /> : null}
               <span>{saved ? 'Saved!' : 'Save Credentials'}</span>

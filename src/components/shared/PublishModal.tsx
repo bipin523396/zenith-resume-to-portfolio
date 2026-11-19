@@ -173,24 +173,24 @@ export const PublishModal: React.FC<PublishModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn font-sans">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn font-sans">
       <div 
-        className="w-full max-w-lg rounded-2xl border border-[#E2E8F0] bg-white text-[#172033] shadow-xl p-6 sm:p-7 space-y-5 relative overflow-hidden"
+        className="w-full max-w-lg rounded-2xl border border-[#1E2330] bg-[#11141E] text-[#F8FAFC] shadow-2xl p-6 sm:p-7 space-y-5 relative overflow-hidden"
         onClick={e => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-4">
+        <div className="flex items-center justify-between border-b border-[#1E2330] pb-4">
           <div className="flex items-center gap-3">
             <div className={`w-9 h-9 rounded-lg flex items-center justify-center ${
-              isUnpublished ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700'
+              isUnpublished ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20' : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
             }`}>
               <Globe size={18} />
             </div>
             <div>
-              <h2 className="text-base font-bold text-[#14213D]">
+              <h2 className="text-base font-bold text-white">
                 {isUnpublished ? 'Portfolio Unpublished' : 'Portfolio is Live!'}
               </h2>
-              <div className="text-xs text-[#64748B]">
+              <div className="text-xs text-[#94A3B8]">
                 {isUnpublished ? 'Public access is currently suspended' : 'Accessible worldwide via custom URL'}
               </div>
             </div>
@@ -198,7 +198,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
 
           <button 
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-[#172033] hover:bg-slate-100 transition-colors"
+            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-[#1E2435] transition-colors"
           >
             <X size={18} />
           </button>
@@ -208,17 +208,17 @@ export const PublishModal: React.FC<PublishModalProps> = ({
         {!isUnpublished ? (
           <div className="space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-[#14213D]">Public Live Website URL</label>
+              <label className="text-xs font-semibold text-slate-300">Public Live Website URL</label>
               <div className="flex items-center gap-2">
                 <input 
                   type="text" 
                   readOnly 
                   value={publicShareUrl}
-                  className="flex-1 px-3 py-2 rounded-lg bg-slate-50 border border-[#CBD5E1] text-xs font-mono text-[#172033] select-all"
+                  className="flex-1 px-3 py-2 rounded-lg bg-[#0D0F17] border border-[#22283A] text-xs font-mono text-white select-all focus:outline-none focus:border-[#3B82F6]"
                 />
                 <button
                   onClick={handleCopyLink}
-                  className="px-3.5 py-2 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                  className="px-3.5 py-2 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white text-xs font-semibold flex items-center gap-1.5 transition-colors"
                 >
                   {copied ? <Check size={14} /> : <Copy size={14} />}
                   <span>{copied ? 'Copied' : 'Copy'}</span>
@@ -229,21 +229,21 @@ export const PublishModal: React.FC<PublishModalProps> = ({
             {/* Cloud Persistence Status Card */}
             <div className={`p-3 rounded-xl border text-xs flex items-center justify-between ${
               cloudStatus.synced 
-                ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900'
+                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
                 : cloudStatus.configured 
-                  ? 'bg-amber-50/70 border-amber-200 text-amber-900'
-                  : 'bg-slate-50 border-[#E2E8F0] text-slate-700'
+                  ? 'bg-amber-500/10 border-amber-500/20 text-amber-300'
+                  : 'bg-[#141824] border-[#1E2330] text-slate-300'
             }`}>
               <div className="flex items-center gap-2">
                 {isSyncing ? (
-                  <RefreshCw size={14} className="text-[#2563EB] animate-spin" />
+                  <RefreshCw size={14} className="text-[#3B82F6] animate-spin" />
                 ) : cloudStatus.synced ? (
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-emerald-200" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 ring-2 ring-emerald-500/30" />
                 ) : (
-                  <Database size={14} className="text-slate-500" />
+                  <Database size={14} className="text-slate-400" />
                 )}
                 <div className="flex flex-col">
-                  <span className="font-semibold text-[11px]">
+                  <span className="font-semibold text-[11px] text-white">
                     {cloudStatus.synced ? 'Supabase Cloud Database' : 'Storage Mode'}
                   </span>
                   <span className="text-[11px] opacity-80">
@@ -254,7 +254,7 @@ export const PublishModal: React.FC<PublishModalProps> = ({
 
               <button
                 onClick={onOpenLiveSite}
-                className="text-xs font-semibold text-[#2563EB] hover:underline flex items-center gap-1 shrink-0 ml-2"
+                className="text-xs font-semibold text-[#3B82F6] hover:underline flex items-center gap-1 shrink-0 ml-2"
               >
                 <span>Open Website</span>
                 <ExternalLink size={12} />
@@ -262,11 +262,11 @@ export const PublishModal: React.FC<PublishModalProps> = ({
             </div>
           </div>
         ) : (
-          <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-800 space-y-2">
+          <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 space-y-2">
             <p>Your portfolio has been removed from public access. Only local drafts exist in your browser.</p>
             <button
               onClick={handleRepublish}
-              className="px-3.5 py-1.5 rounded-lg bg-[#2563EB] hover:bg-[#1D4ED8] text-white font-semibold text-xs transition-colors"
+              className="px-3.5 py-1.5 rounded-lg bg-[#3B82F6] hover:bg-[#2563EB] text-white font-semibold text-xs transition-colors"
             >
               Re-Publish Website
             </button>
@@ -274,10 +274,10 @@ export const PublishModal: React.FC<PublishModalProps> = ({
         )}
 
         {/* Actions Grid */}
-        <div className="pt-2 border-t border-[#E2E8F0] flex flex-wrap items-center justify-between gap-3">
+        <div className="pt-2 border-t border-[#1E2330] flex flex-wrap items-center justify-between gap-3">
           <button
             onClick={onDownloadZip}
-            className="flex items-center gap-1.5 text-xs font-semibold text-[#64748B] hover:text-[#172033] transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-[#94A3B8] hover:text-white transition-colors"
           >
             <Download size={13} />
             <span>Download Standalone ZIP</span>
